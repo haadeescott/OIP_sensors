@@ -1,0 +1,5 @@
+Logbook
+------
+
+to switch the lcd back to the original resolution after using LCD28
+- sudo ./LCD-hdmi
