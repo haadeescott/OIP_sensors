@@ -3,3 +3,9 @@ Logbook
 
 to switch the lcd back to the original resolution after using LCD28
 - sudo ./LCD-hdmi
+
+run inception v4 normal one
+convert afterwards to edge tpu
+
+run curl ... command to get training and visualization
+upload that to tensorboard

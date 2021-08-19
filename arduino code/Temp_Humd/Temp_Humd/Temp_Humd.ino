@@ -17,16 +17,16 @@ void loop(){
   chk = DHT.read(DHT11_PIN);    // READ DATA
   switch (chk){
     case DHTLIB_OK:
-                Serial.print("OK,\t");
+                Serial.println("OK,\t");
                 break;
     case DHTLIB_ERROR_CHECKSUM:
-                Serial.print("Checksum error,\t");
+                Serial.println("Checksum error,\t");
                 break;
     case DHTLIB_ERROR_TIMEOUT:
-                Serial.print("Time out error,\t");
+                Serial.println("Time out error,\t");
                 break;
     default:
-                Serial.print("Unknown error,\t");
+                Serial.println("Unknown error,\t");
                 break;
   }
  // DISPLAT DATA
