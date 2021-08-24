@@ -1,18 +1,16 @@
-#RECEIVE SIDE
-
 import bluetooth
 
 server_sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 
+bd_addr = "B8:27:EB:1F:9C:84"
 port = 1
 server_sock.bind(("",port))
 server_sock.listen(1)
 
-client_sock,address = server_sock.accept()
-print("Accepted connection from ",address)
 
-data = client_sock.recv(1024)
-print("received [%s]" % data)
+sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+sock.connect((bd_addr, port))
 
-client_sock.close()
-server_sock.close()
+sock.send("hello!!")
+
+sock.close()
