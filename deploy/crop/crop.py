@@ -11,8 +11,12 @@ def crop_image(input_image, output_image, start_x, start_y, width, height):
 
 def main():
     # crop 1st slot
-    # crop_image("popo4.jpg","new_output2", 900, 350, 1000, 2000)
+    # crop_image("test100.jpg","test100_crop", 970, 210, 570, 2050) //DRY
+    # crop_image("test101.jpg","test101_crop", 1000, 210, 570, 2050) //WET
+    # DIRTY
+    # crop_image("test102.jpg","test102_crop", 1370, 210, 570, 2050) 
     # crop 2nd slot
-    crop_image("popo4.jpg","new_output3", 1600, 350, 600, 2000)
+    # crop_image("test100.jpg","test100_crop2", 1770, 210, 570, 2050) 
+    # crop_image("testDirty2.jpg","testDirty2_crop", 0, 0, 300, 700)
 
 if __name__ == '__main__': main()

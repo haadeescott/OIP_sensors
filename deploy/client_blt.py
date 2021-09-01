@@ -8,16 +8,19 @@ port = 1
 port2 = 2
 
 
-client_sock.connect((bd_addr, port))
-
-time.sleep(5)
-# client_sock.send("test")
-
-
 server_sock.bind(("",port2))
 server_sock.listen(1)
-
 otherClient_sock, address = server_sock.accept()
+
+client_sock.connect((bd_addr, port))
+
+
+test = "012"
+
+client_sock.send(test)
+
+
+
 
 # data = otherClient_sock.recv(1024)
 # print("received [%s]" % data)
