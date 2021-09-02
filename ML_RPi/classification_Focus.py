@@ -172,12 +172,16 @@ def verifyClassificationOfSyringe():
     print(f"\nDirty: {countDirty} | Wet: {countWet} | Dry: {countDry}")
 
 
-
+# Verifies the presence of Syringes on the Syringe Rack
 verifyPresenceOfSyringe()
 print("Completed Washing of Syringes. \n")
+
+# Once Syringes are detected, boolean is returned
 if gotSyringeBool == True:
     print("Drying Syringes now...")
     print("Loading...\n")
+
+    # Classifies Syringes 
     verifyClassificationOfSyringe()
     print("\nCompleted Classification of Syringes.")
 else:
