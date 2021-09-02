@@ -23,6 +23,7 @@ const int fan_control_pin = A4;
 int FLOATSW = 7; 
 int PUMP = A3;
 int LEDSTRIP = A5;
+int WATERVALVE = A6;
 
 int WASH = 0;
 int DRY = 0;
@@ -88,6 +89,8 @@ void setup()
   pinMode(fan_control_pin, OUTPUT);
   digitalWrite(fan_control_pin, LOW);
   pinMode(FLOATDETECT, INPUT);
+  pinMode(WATERVALVE, OUTPUT);
+  digitalWrite(WATERVALVE, LOW);
 
   
   // Set the speed to 60 rpm (Stepper Motor)
@@ -106,9 +109,7 @@ void loop()
   
   if (Serial.available() > 0) {
      
-
 //=============================== Function 1 =============================
-
     
     Function = (Serial.read());
     if (Function == '1') {
@@ -166,11 +167,6 @@ void loop()
         
         if (Function == '0') {
           
-          STOP = 1;
-          Drain = 0;
-          DRY = 0;
-          FINISHDRY = 0;
-          
           Serial.println("STOP"); 
           lcd.clear();
           lcd.setCursor(0, 0);
@@ -178,6 +174,7 @@ void loop()
           lcd.setCursor(0, 1);
           lcd.print("Draining Water");
           digitalWrite(PUMP, LOW);
+          digitalWrite(WATERVALVE, HIGH);
           
           delay(2000);
 
@@ -245,6 +242,7 @@ void loop()
               lcd.setCursor(0, 1);
               lcd.print("Draining Water");
               digitalWrite(PUMP, LOW);
+              digitalWrite(WATERVALVE, HIGH);
               
               break;
               //Drain Water
@@ -267,6 +265,7 @@ void loop()
         lcd.print("Draining");
         lcd.setCursor(0, 1);
         lcd.print("Water");
+        digitalWrite(WATERVALVE, HIGH);
         
         delay(1000);
     
@@ -282,7 +281,9 @@ void loop()
         if (currentMillis - startMillis >= 10 ){  //Checking for Elapse time
   
         delay(1000);
+
         
+        digitalWrite(WATERVALVE, LOW);
         digitalWrite(WASHLED, HIGH);
         Drain = 0;
         DRY = 1;
@@ -334,7 +335,6 @@ void loop()
       digitalWrite(fan_control_pin, HIGH);
       
       
-  
       startMillis = millis()/1000;  // Start Drying Time
 
         
@@ -399,6 +399,11 @@ void loop()
 
             Function = (Serial.read()); 
             if (Function == '0') {
+              
+              STOP = 1;
+              Drain = 0;
+              DRY = 0;
+              FINISHDRY = 0;
  
               Serial.println("STOP"); 
               lcd.clear();
@@ -622,8 +627,3 @@ void loop()
 }
 
   
-
-
-
-
- 
