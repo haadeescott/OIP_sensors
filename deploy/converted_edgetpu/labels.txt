@@ -1,3 +1,0 @@
-0 Wet
-1 Dirty
-2 Dry
